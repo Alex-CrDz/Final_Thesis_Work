@@ -13,6 +13,8 @@ This is the final work of Globant's Java Academy, consist in a RestAPI for messa
 
 The project has 2 Docker files, the first (_in ./db folder_) that defines the database environment with its parameters, scripts and config, and the second (_in root directory_) to create a docker container for the java application, both orchestrated by a docker-compose.yml file.
 
+-> _**Note**: When deploy with docker-compose the java app container will deploy first and fail, because the sqlserver DB container is still executing initial script's database and inserts, and java app cointainer will not found any DB to connect, so wait for DB container for end its initialization and restart the java app container._
+
 ## Architecture
 
 - ### Persistence:
