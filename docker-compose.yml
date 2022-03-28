@@ -1,0 +1,19 @@
+version: "3.9"
+
+services:
+  mssql: # taken from: https://stackoverflow.com/questions/69941444/how-to-have-docker-compose-init-a-sql-server-database
+    build: ./db
+    ports:
+      - 1433:1433
+    volumes:
+      - mssql_volume:/var/opt/mssql
+
+  final-thesis-work:
+    build: .
+    ports:
+      - 8080:8080
+    environment:
+      DEPLOY_PROFILE: prod
+
+volumes:
+  mssql_volume:
